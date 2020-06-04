@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+
+  
+  <title>VS code 调试Cmake 工程</title>
+  
+
+  <link rel="alternate" href="/atom.xml" title="追梦赤子心的个人博客" type="application/atom+xml">
+  <link rel="canonical" href="https://wangchangjin123.github.io/2020/06/04/vscode-catkin/index.html">
+  <link rel="shortcut icon" href="/">
+
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_pb2xepysv85gsyvi.css">
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+  <body>
+    <aside class="aside">
+  <nav class="aside-menu">
+    <ul class="aside-list">
+      
+        
+        <li class="aside-item"><i class="aside-menu-icon iconfont icon-wendang"></i><a href="/index.html" class="aside-menu-link" title="首页">首页</a></li>
+        
+      
+        
+        <li class="aside-item"><i class="aside-menu-icon iconfont icon-wendang1"></i><a href="/archives/index.html" class="aside-menu-link" title="所有文章">所有文章</a></li>
+        
+      
+        
+        <li class="aside-item"><i class="aside-menu-icon iconfont icon-biaoqian1"></i><a href="/tags/index.html" class="aside-menu-link" title="分类标签">分类标签</a></li>
+        
+      
+        
+        <li class="aside-item"><i class="aside-menu-icon iconfont icon-lianjie"></i><a href="/links/index.html" class="aside-menu-link" title="友情链接">友情链接</a></li>
+        
+      
+        
+        <li class="aside-item"><i class="aside-menu-icon iconfont icon-guanyu"></i><a href="/about/index.html" class="aside-menu-link" title="关于">关于</a></li>
+        
+      
+    </ul>
+  </nav>
+
+  <article class="aside-show">
+    
+      <form class="search-from" id="search-from">
+  <input class="search-text" id="search-text" type="text" name="searchText" value="" autocomplete="off">
+  <button class="search-btn" id="search-btn" type="button"><i class="search-btn-icon iconfont icon-sousuo-sousuo"></i></button>
+</form>
+
+      <article class="search-data" id="search-data">
+  <button class="search-close" id="search-close"><i class="search-close-icon iconfont icon-houdongfangiconfont10"></i></button>
+
+  <div class="search-wrapper" id="search-wrapper"></div>
+</article>
+
+    
+    <div class="aside-show-wrapper">
+      <figure class="aside-avatar">
+        <img src="/img/gulu.png" alt="avatar" class="aside-avatar-img">
+        <figcaption class="aside-avatar-caption">
+          追梦赤子心
+          
+          <strong class="aside-avatar-STRONG">个人博客</strong>
+          
+        </figcaption>
+      </figure>
+      <p class="aside-show-description">没有泪光，风里劲闯,重植根与小岛岸，纵天可变，风可转，不息自强！</p>
+      <ul class="aside-show-info">
+      
+        <li class="aside-show-item"><a href="https://github.com/wangchangjin123" class="aside-show-link" title="github" target="_blank"><i class="aside-show-icon iconfont icon-github"></i></a></li>
+       <li class="aside-show-item"><a href="https://www.zhihu.com/people/chenfengmingwu/activities" class="aside-show-link" title="知乎" target="_blank"><i class="aside-show-icon iconfont icon-zhihu"></i></a></li>
+      </ul>
+    </div>
+  </article>
+</aside>
+
+
+    <article class="main" id="main">
+      <article class="post min-height">
+  
+  <header class="post-header">
+    
+    <h1 class="post-title">VS code 调试Cmake 工程</h1>
+    <p class="post-meta">
+      <span class="post-time">2020-06-04</span>
+      
+      
+      <a href="/tags/code-tool/"" title="code tool" class="post-tags"><i class="post-tags-icon iconfont icon-biaoqian"></i>code tool</a>
+      
+    </p>
+    
+  </header>
+  <div class="post-content"><h3 id="vs-code-调试cmake-工程"><a class="markdownIt-Anchor" href="#vs-code-调试cmake-工程"></a> VS code 调试Cmake 工程：</h3>
+<p><strong>VS code  及cmake 安装步骤请参考</strong>：</p>
+<p><a href="https://blog.csdn.net/MakerCloud/article/details/93545513" target="_blank" rel="noopener">VSCode CMake 安装与配置详解</a></p>
+<p>下载安装cmake，并添加到环境变量（重启后生效）</p>
+<h4 id="一编写-cmake-工程框架-文件"><a class="markdownIt-Anchor" href="#一编写-cmake-工程框架-文件"></a> 一：编写 cmake 工程框架 文件</h4>
+<p>使用【Ctrl+Shift+p】 输入：CMake:Configure</p>
+<p><img src="/2020/06/04/vscode-catkin/1.png" alt></p>
+<p>创建一个Cmake 工程框架，自动生成Cmakelists.txt 文件，通用工程框架如下：</p>
+<p><img src="/2020/06/04/vscode-catkin/2.png" alt></p>
+<p>以上创建Cmake 工程 网上例程很多，但是VS code 调试 C++ 代码，如果利用传统的配置task.json,对于大量.cpp,.h构成的工程显得比较繁琐， Cmakelist 解决了这个问题。但是 VS code Cmake 插件只能编译不能调试，网上相关例程并不是很多。那么如何在VS code下调试 Cmake 工程？</p>
+<p>很简单，在 launch.json 和 task.json 加入几行代码即可。</p>
+<h3 id="二-配置-launchjson-和taskjson"><a class="markdownIt-Anchor" href="#二-配置-launchjson-和taskjson"></a> 二、配置 launch.json 和task.json</h3>
+<h5 id="launchjson-配置如下"><a class="markdownIt-Anchor" href="#launchjson-配置如下"></a> launch.json 配置如下：</h5>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"debug"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;fileDirname&#125;\\build\\leecode_node.exe"</span>, <span class="comment">//这个地方换成自己要调试的 .exe，注意切换到build 文件夹下，作为编译输出文件夹</span></span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            <span class="attr">"miDebuggerPath"</span>: <span class="string">"C:\\mingw64\\bin\\gdb.exe"</span>, </span><br><span class="line">            <span class="attr">"setupCommands"</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"make"</span>   <span class="comment">//预先启动的task的脚本，task.json 是代码的编译相关脚本</span></span><br><span class="line">          <span class="comment">//  make 只是任务的标签</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>launch.json 为 VS code 这个IDE 的环境相关的配置脚本，不同的代码语言，不同的环境，通常对应不同的设置。 环境加载好了，那么就剩编译代码了。task.json 就是代码编译相关脚本。</p>
+<h5 id="taskjson-配置如下"><a class="markdownIt-Anchor" href="#taskjson-配置如下"></a> task.json 配置如下：</h5>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"tasks"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"cmake"</span>,</span><br><span class="line">            <span class="attr">"options"</span>: &#123;</span><br><span class="line">                <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;/build"</span>    <span class="comment">//切换到build 下，重要！</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Debug .. "</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"make"</span>,</span><br><span class="line">            <span class="attr">"options"</span>: &#123;</span><br><span class="line">                <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;/build"</span>  <span class="comment">//切换到build 下，重要！</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"make -j8"</span>,  <span class="comment">//-j n 电脑几核就可以写几，加快编译速度</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">"dependsOn"</span>: [ <span class="string">"cmake"</span> ],  <span class="comment">//非常重要！ make 的执行依赖 Cmake 执行完毕，不然呵呵</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置完毕后： 按下F5 就可以开始编译调试Cmake 工程啦，还可以设置断点，美滋滋！ VS code 里面很多好用的功能就可以在大型 C/C++ 工程中派上用场啦。</p>
+<p><img src="/2020/06/04/vscode-catkin/3.png" alt></p>
+<p><strong>以上为自己总结，欢迎大家指出不足之处，共勉！</strong></p>
+</div>
+    
+      <p class="post-copyright">若无特别说明，本文系原创，转载文章请注明来自<a class="post-copyright-link" href="https://wangchangjin123.github.io/2020/06/04/vscode-catkin/" title="https://wangchangjin123.github.io/2020/06/04/vscode-catkin/" target="_blank">https://wangchangjin123.github.io/2020/06/04/vscode-catkin/</a></p>
+
+      
+      <div class="toc-wrapper">
+        <div class="toc-scroll">
+          <div class="toc-middle">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vs-code-调试cmake-工程"><span class="toc-text"> VS code 调试Cmake 工程：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一编写-cmake-工程框架-文件"><span class="toc-text"> 一：编写 cmake 工程框架 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-配置-launchjson-和taskjson"><span class="toc-text"> 二、配置 launch.json 和task.json</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#launchjson-配置如下"><span class="toc-text"> launch.json 配置如下：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#taskjson-配置如下"><span class="toc-text"> task.json 配置如下：</span></a></li></ol></li></ol></li></ol>
+          </div>
+        </div>
+      </div>
+    
+  
+</article>
+
+      <footer class="footer">
+  
+  <p class="footer-text">闲看前庭花开花落，漫随天外云卷云舒</p>
+ <p class="footer-text">Copyrigth@追梦赤子心</p>
+  
+</footer>
+
+    </article>
+
+    
+<script src="/js/to-top.js"></script>
+
+    
+<script src="/js/search.js"></script>
+
+  </body>
+</html>
